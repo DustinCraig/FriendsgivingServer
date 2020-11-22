@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const path = require('path')
+const cors = require('cors')
 const fs = require('fs')
 
 const Joey = 'joey'
@@ -15,6 +16,8 @@ let pickedNames = []
 
 app.use(express.static('monitor'))
 app.use(express.static(__dirname + '/monitor'))
+app.use(cors())
+app.options('*', cors())
 
 const rewriteNames = (names) => {
     let str = ''
